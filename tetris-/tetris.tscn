@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7n8dvwx0b1kx"]
+
+[ext_resource type="Texture2D" uid="uid://if5ghfaj8le" path="res://tetris-sheet.png" id="1_rxr4a"]
+[ext_resource type="Script" uid="uid://ccfqb8sdjty" path="res://tetris.gd" id="2_8lihd"]
+[ext_resource type="Texture2D" uid="uid://uxpa3mu7xnre" path="res://button1.png" id="3_8lihd"]
+[ext_resource type="Texture2D" uid="uid://bwb6a2uu2tan2" path="res://pause.png" id="4_i0mbr"]
+[ext_resource type="Script" uid="uid://dlq00yvv287dw" path="res://node.gd" id="5_ei8v1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8lihd"]
+texture = ExtResource("1_rxr4a")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ei8v1"]
+tile_size = Vector2i(32, 32)
+sources/2 = SubResource("TileSetAtlasSource_8lihd")
+
+[node name="Tetris" type="TileMap"]
+tile_set = SubResource("TileSet_ei8v1")
+format = 2
+layer_0/name = "background"
+layer_0/tile_data = PackedInt32Array(0, 524290, 0, 65536, 524290, 0, 131072, 524290, 0, 196608, 524290, 0, 262144, 524290, 0, 327680, 524290, 0, 393216, 524290, 0, 458752, 524290, 0, 524288, 524290, 0, 589824, 524290, 0, 655360, 524290, 0, 720896, 524290, 0, 786432, 524290, 0, 851968, 524290, 0, 917504, 524290, 0, 983040, 524290, 0, 1048576, 524290, 0, 1114112, 524290, 0, 1179648, 524290, 0, 1245184, 524290, 0, 1310720, 524290, 0, 1376256, 524290, 0, 1, 524290, 0, 1376257, 524290, 0, 2, 524290, 0, 1376258, 524290, 0, 3, 524290, 0, 1376259, 524290, 0, 4, 524290, 0, 1376260, 524290, 0, 5, 524290, 0, 1376261, 524290, 0, 6, 524290, 0, 1376262, 524290, 0, 7, 524290, 0, 1376263, 524290, 0, 8, 524290, 0, 1376264, 524290, 0, 9, 524290, 0, 1376265, 524290, 0, 10, 524290, 0, 1376266, 524290, 0, 11, 524290, 0, 65547, 524290, 0, 131083, 524290, 0, 196619, 524290, 0, 262155, 524290, 0, 327691, 524290, 0, 393227, 524290, 0, 458763, 524290, 0, 524299, 524290, 0, 589835, 524290, 0, 655371, 524290, 0, 720907, 524290, 0, 786443, 524290, 0, 917515, 524290, 0, 983051, 524290, 0, 1048587, 524290, 0, 1114123, 524290, 0, 1179659, 524290, 0, 1245195, 524290, 0, 1310731, 524290, 0, 1376267, 524290, 0, 851979, 524290, 0)
+layer_1/name = "active"
+script = ExtResource("2_8lihd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 401.0
+offset_top = 75.0
+offset_right = 682.0
+offset_bottom = 248.0
+theme_override_font_sizes/normal_font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 389.0
+offset_top = 268.0
+offset_right = 653.0
+offset_bottom = 506.0
+theme_override_colors/icon_normal_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Play 
+Again?"
+icon = ExtResource("3_8lihd")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 406.0
+offset_top = 525.0
+offset_right = 687.0
+offset_bottom = 698.0
+theme_override_font_sizes/normal_font_size = 40
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pause" type="Sprite2D" parent="."]
+position = Vector2(308, 357)
+scale = Vector2(8.53125, 8.85938)
+texture = ExtResource("4_i0mbr")
+
+[node name="Node" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("5_ei8v1")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
